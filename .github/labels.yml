@@ -1,0 +1,55 @@
+# Synced with `gh label` via scripts/sync-labels.sh
+- name: wave
+  color: "5319E7"
+  description: Drips Wave sprint task
+- name: wave-trivial
+  color: "C5DEF5"
+  description: Drips Wave — trivial complexity
+- name: wave-medium
+  color: "1D76DB"
+  description: Drips Wave — medium complexity
+- name: wave-high
+  color: "0E2F6B"
+  description: Drips Wave — high complexity
+- name: good-first-issue
+  color: "7057FF"
+  description: Good for newcomers
+- name: help-wanted
+  color: "008672"
+  description: Extra attention is needed
+- name: area:frontend
+  color: "FBCA04"
+  description: Frontend / UI
+- name: area:backend
+  color: "F9D0C4"
+  description: Backend services and APIs
+- name: area:contract
+  color: "D93F0B"
+  description: Soroban smart contracts
+- name: area:sdk
+  color: "0052CC"
+  description: SDKs and client libraries
+- name: area:docs
+  color: "0075CA"
+  description: Documentation
+- name: area:security
+  color: "B60205"
+  description: Security hardening
+- name: area:devops
+  color: "BFD4F2"
+  description: CI, Docker, tooling
+- name: priority:low
+  color: "E4E669"
+  description: Low priority
+- name: priority:medium
+  color: "FFA500"
+  description: Medium priority
+- name: priority:high
+  color: "FF0000"
+  description: High priority
+- name: bug
+  color: "D73A4A"
+  description: Something isn't working
+- name: enhancement
+  color: "A2EEEF"
+  description: New feature or request

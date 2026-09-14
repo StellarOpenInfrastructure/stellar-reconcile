@@ -1,0 +1,12 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "noEmit": true,
+    "baseUrl": "..",
+    "paths": {
+      "@stellar-reconcile/core": ["packages/core/src/index.ts"]
+    }
+  },
+  "include": ["src/**/*.ts"]
+}

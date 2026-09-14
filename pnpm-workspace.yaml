@@ -1,0 +1,14 @@
+packages:
+  - packages/*
+  - backend
+
+# Supply-chain guard: only these packages may run install scripts.
+allowBuilds:
+  esbuild: true
+  "@tailwindcss/oxide": true
+  sharp: true
+
+# Resolve versions published at least 1 day ago (pnpm >= 10.16 supply-chain delay).
+minimumReleaseAge: 1440
+minimumReleaseAgeExclude:
+  - zod

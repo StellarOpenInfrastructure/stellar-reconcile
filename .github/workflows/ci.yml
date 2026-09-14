@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  node:
+    name: Node — lint, typecheck, test, build
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: reconcile
+          POSTGRES_PASSWORD: reconcile
+          POSTGRES_DB: reconcile
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U reconcile" --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      DATABASE_URL: postgres://reconcile:reconcile@localhost:5432/reconcile
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Format check
+        run: pnpm run format:check
+      - name: Lint
+        run: pnpm run lint
+      - name: Typecheck
+        run: pnpm run typecheck
+      - name: Unit tests
+        run: pnpm run test
+      - name: Build
+        run: pnpm run build
+
+  docker:
+    name: Docker image builds
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - name: Build backend image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: backend/Dockerfile
+          push: false
+          tags: local/backend:ci
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

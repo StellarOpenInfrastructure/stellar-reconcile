@@ -1,0 +1,9 @@
+*.qr.svg
+*.png
+.stellar/
+dist/
+node_modules/
+build/
+.env
+pgdata/
+test_snapshots/

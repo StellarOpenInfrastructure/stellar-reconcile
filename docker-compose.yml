@@ -1,0 +1,37 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    ports:
+      - "4020:4020"
+    environment:
+      NODE_ENV: production
+      LOG_LEVEL: info
+      DATABASE_URL: postgres://reconcile:reconcile@postgres:5432/reconcile
+      STELLAR_NETWORK: testnet
+      CORS_ORIGINS: "*"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: reconcile
+      POSTGRES_PASSWORD: reconcile
+      POSTGRES_DB: reconcile
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./database/migrations:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U reconcile"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  pgdata:

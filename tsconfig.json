@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@stellar-reconcile/core": ["packages/core/src/index.ts"]
+    },
+    "rootDir": "."
+  },
+  "include": [
+    "packages/*/src/**/*.ts",
+    "backend/src/**/*.ts",
+    "tests/**/*.ts",
+    "vitest.config.ts",
+    "eslint.config.js",
+    "scripts/**/*.ts"
+  ],
+  "exclude": ["**/node_modules", "**/dist", "frontend"]
+}

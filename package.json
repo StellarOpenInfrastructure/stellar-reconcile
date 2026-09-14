@@ -1,0 +1,41 @@
+{
+  "name": "stellar-reconcile",
+  "version": "0.1.0",
+  "private": true,
+  "description": "",
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@11.9.0",
+  "scripts": {
+    "setup": "pnpm install",
+    "dev": "pnpm --filter @stellar-reconcile/api dev",
+    "lint": "eslint . && prettier --check .",
+    "lint:fix": "eslint . --fix && prettier --write .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "build": "pnpm -r --workspace-concurrency=1 run build",
+    "clean": "pnpm -r run clean",
+    "migrate": "tsx scripts/migrate.ts",
+    "openapi": "tsx scripts/export-openapi.ts"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@stellar/stellar-sdk": "^17.0.1",
+    "@types/node": "^24.0.0",
+    "@vitest/coverage-v8": "^5.0.0",
+    "eslint": "^10.10.0",
+    "prettier": "^3.9.6",
+    "tsx": "^4.23.13",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.70.0",
+    "vitest": "^5.0.0",
+    "postgres": "^3.4.9"
+  }
+}
