@@ -32,7 +32,7 @@
     "@fastify/swagger": "^9.8.1",
     "@fastify/swagger-ui": "^6.1.1",
     "@stellar-reconcile/core": "workspace:*",
-    "fastify": "^5.12.4",
+    "fastify": "^5.12.5",
     "fastify-type-provider-zod": "^7.0.0",
     "pino": "^10.3.1",
     "postgres": "^3.4.9",
