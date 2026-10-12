@@ -29,7 +29,7 @@
   "dependencies": {
     "@fastify/cors": "^11.3.0",
     "@fastify/helmet": "^13.1.1",
-    "@fastify/swagger": "^9.8.1",
+    "@fastify/swagger": "^9.9.2",
     "@fastify/swagger-ui": "^6.1.1",
     "@stellar-reconcile/core": "workspace:*",
     "fastify": "^5.12.4",
